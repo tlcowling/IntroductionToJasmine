@@ -12,31 +12,29 @@ describe("Jasmine's test doubles are called spies", function() {
 
 		company.setName('cellusys');
 	});
-	
-
-	it("assert function call", function() {
-		expect(company.setName).toHaveBeenCalled();
-	});
 
 
-	// it("track the number of calls made", function() {
-	// 	expect(company.setName.calls.number).toEqual(1);
-	// });
 
-	describe("jasmine.any", function() {
+
+
+
+
+	describe("Jasmine has matchers for ANY", function() {
 	  it("matches any value", function() {
 	    expect({}).toEqual(jasmine.any(Object));
 	    expect(12).toEqual(jasmine.any(Number));
 	  });
 
-	  describe("when used with a spy", function() {
+
+	  describe("Using ANY with SPIES ", function() {
 	    it("is useful for comparing arguments", function() {
-	      var foo = jasmine.createSpy('foo');
-	      foo(12, function() {
+
+	      var Ed = jasmine.createSpy('Ed');
+	      Ed(12, function() {
 	        return true
 	      });
 
-	      expect(foo).toHaveBeenCalledWith(jasmine.any(Number), jasmine.any(Function));
+	      expect(Ed).toHaveBeenCalledWith(jasmine.any(Number), jasmine.any(Function));
 	    });
 	  });
 	});
