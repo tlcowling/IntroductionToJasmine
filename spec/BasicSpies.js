@@ -17,8 +17,6 @@ describe("Jasmine's test doubles are called spies", function() {
 
 
 
-
-
 	describe("Jasmine has matchers for ANY", function() {
 	  it("matches any value", function() {
 	    expect({}).toEqual(jasmine.any(Object));
