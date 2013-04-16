@@ -1,39 +1,28 @@
-describe("Jasmine's test doubles are called spies", function() {
-	var company = null;
+describe("Jasmine's test doubles are called spies -  a 'spy' replaces the function it is spying on.", function() {
+
 
 	beforeEach(function() {
-		company = {
-			setName: function(value) {
-				name = value;
-			}
-		}; 
-
-		spyOn(company, 'setName');
-
-		company.setName('cellusys');
+		spyOn(Cellusys, 'numberOfEmployees');
+		spyOn(Cellusys, 'worth');
+		spyOn(Cellusys, 'sendLetterOfRecommendationFor');
 	});
 
+	xit("expects a method of an object to have been called", function() {
+		expect(Cellusys.numberOfEmployees).toHaveBeenCalled();
 
+		//similarly
+		expect(Cellusys.worth).not.toHaveBeenCalled();
+	});	
 
+	xit("expects a method of an object to have been called with a particular argument", function() {
+		expect(Cellusys.sendLetterOfRecommendationFor).toHaveBeenCalledWith('Johnny');
+	});
 
+	xit("expects a method of an object to have been more than once", function() {
+		expect(Cellusys.sendLetterOfRecommendationFor.callCount).toBeGreaterThan(1);
+	});
 
-	describe("Jasmine has matchers for ANY", function() {
-	  it("matches any value", function() {
-	    expect({}).toEqual(jasmine.any(Object));
-	    expect(12).toEqual(jasmine.any(Number));
-	  });
-
-
-	  describe("Using ANY with SPIES ", function() {
-	    it("is useful for comparing arguments", function() {
-
-	      var Ed = jasmine.createSpy('Ed');
-	      Ed(12, function() {
-	        return true
-	      });
-
-	      expect(Ed).toHaveBeenCalledWith(jasmine.any(Number), jasmine.any(Function));
-	    });
-	  });
+	xit("create a default spy to do something that you want", function() {
+		var dummy = jasmine.createSpy('dummy');
 	});
 });
